@@ -1,0 +1,31 @@
+import 'package:flutter/material.dart';
+import 'package:fruits_app/core/constants/views_routes_constants.dart';
+
+class SplashScreenView extends StatelessWidget {
+  const SplashScreenView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    goToNextPage(context);
+
+    return Scaffold(
+      body: Image.asset(
+        'assets/images/splash_screen.png',
+        fit: BoxFit.fill,
+        width: double.infinity,
+        height: double.infinity,
+      ),
+    );
+  }
+
+  goToNextPage(BuildContext context) async {
+    await Future.delayed(const Duration(seconds: 1));
+
+    if (context.mounted) {
+      Navigator.pushReplacementNamed(
+        context,
+        ViewsRoutesConstants.onboardingPage,
+      );
+    }
+  }
+}
