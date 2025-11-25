@@ -7,8 +7,8 @@ import 'package:fruits_app/features/dashboard/models/product_model.dart';
 class ProductWidget extends StatelessWidget {
   const ProductWidget({
     super.key,
-    required this.extraWidget,
     required this.productModel,
+    required this.extraWidget,
     this.rowSpacing = 16.0,
     this.imageSize = 50.0,
   });

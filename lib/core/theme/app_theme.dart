@@ -24,6 +24,7 @@ final AppBarThemeData _appBarTheme = const AppBarThemeData(
     fontWeight: FontWeight.bold,
     fontSize: 23,
   ),
+  shape: Border(bottom: BorderSide(color: Colors.grey)),
   systemOverlayStyle: SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.dark,
