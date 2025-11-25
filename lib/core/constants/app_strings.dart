@@ -38,6 +38,7 @@ abstract class AppStrings {
   static const String close = 'close';
   static const String sellers = 'Sellers';
   static const String showAll = 'Show all';
+  static const String myOrders = 'My Orders';
   static const String basket = 'Basket';
   static const String proceedToCheckout = "proceed to Checkout";
 }

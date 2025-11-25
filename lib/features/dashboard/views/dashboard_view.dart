@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_app/features/dashboard/widgets/cart_widget.dart';
 import 'package:fruits_app/features/dashboard/widgets/custom_bottom_nav_bar.dart';
 import 'package:fruits_app/features/dashboard/widgets/home_widget.dart';
+import 'package:fruits_app/features/dashboard/widgets/orders_widget.dart';
 
 class DashboardView extends StatefulWidget {
   const DashboardView({super.key});
@@ -36,8 +38,8 @@ class _DashboardViewState extends State<DashboardView> {
           controller: _PageController,
           children: const [
             HomeWidget(),
-            Center(child: Text('Category')),
-            Center(child: Text('Search')),
+            OrdersWidget(),
+            CartWidget(),
             Center(child: Text('Favorite')),
             Center(child: Text('Profile')),
           ],
