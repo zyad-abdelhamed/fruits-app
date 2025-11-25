@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fruits_app/core/helper_functions/is_land_scape_orintation.dart';
-import 'package:fruits_app/core/utils/extentions/responsive_extention.dart';
+import 'package:fruits_app/core/utils/extentions/media_query_extention.dart';
 
 class OnboardingPageViewItem extends StatelessWidget {
   const OnboardingPageViewItem({
@@ -15,7 +14,7 @@ class OnboardingPageViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double imageSize = isLandScapeOrientation(context)
+    final double imageSize = context.isLandScape
         ? context.height * 0.6
         : context.width * 0.6;
 

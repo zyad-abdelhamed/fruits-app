@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_app/core/constants/constants_values.dart';
 import 'package:fruits_app/core/constants/images_routes_constants.dart';
-import 'package:fruits_app/core/utils/extentions/responsive_extention.dart';
+import 'package:fruits_app/core/utils/extentions/media_query_extention.dart';
 import 'package:fruits_app/core/widgets/custom_dots_indicator.dart';
 
 class BanersWidget extends StatefulWidget {

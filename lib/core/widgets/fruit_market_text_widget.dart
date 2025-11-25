@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_app/core/constants/app_strings.dart';
 import 'package:fruits_app/core/theme/app_colors.dart';
-import 'package:fruits_app/core/utils/extentions/responsive_extention.dart';
+import 'package:fruits_app/core/utils/extentions/media_query_extention.dart';
 
 class FruitMarketTextWidget extends StatelessWidget {
   const FruitMarketTextWidget({super.key});

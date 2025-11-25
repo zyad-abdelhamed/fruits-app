@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_app/core/constants/app_strings.dart';
 import 'package:fruits_app/core/constants/images_routes_constants.dart';
 import 'package:fruits_app/core/constants/views_routes_constants.dart';
-import 'package:fruits_app/core/helper_functions/is_land_scape_orintation.dart';
-import 'package:fruits_app/core/utils/extentions/responsive_extention.dart';
+import 'package:fruits_app/core/utils/extentions/media_query_extention.dart';
 import 'package:fruits_app/core/widgets/custom_dots_indicator.dart';
 import 'package:fruits_app/features/onboarding/widgets/onboarding_page_view_item.dart';
 
@@ -92,7 +91,7 @@ class _OnboardingViewState extends State<OnboardingView> {
           );
         },
         child: SizedBox(
-          height: isLandScapeOrientation(context)
+          height: context.isLandScape
               ? context.height * .8
               : context.width * .8,
           child: PageView(

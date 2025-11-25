@@ -5,4 +5,5 @@ abstract class ImagesRoutesConstants {
   static const String facebook = 'assets/images/facebook.png';
   static const String call = 'assets/images/call.png';
   static const String edit = 'assets/images/edit.png';
+  static const String addToCart = 'assets/images/add_to_basket.png';
 }
