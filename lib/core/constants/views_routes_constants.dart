@@ -8,4 +8,5 @@ abstract class ViewsRoutesConstants {
   static const String enterOtpView = '/enterOtpView';
   static const String dashboardView = '/dashboardView';
   static const String termsAndConditionsView = '/termsAndConditionsView';
+  static const String contactUsView = '/contactUsView';
 }

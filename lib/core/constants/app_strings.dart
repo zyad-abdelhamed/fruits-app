@@ -3,6 +3,7 @@ abstract class AppStrings {
   static const String skip = 'Skip';
   static const String next = 'Next';
   static const String getStarted = 'Get Started';
+  static const String requiredMark = '*';
   static const List<Map<String, String>> onboardingPageViewItems = [
     {
       'title': 'E Shopping',
@@ -85,4 +86,5 @@ agreements. These terms are
 interchangeable, practically speaking. 
 More rarely, it may be called something like 
 an End User Services Agreement (EUSA).''';
+  static const String contactUs = "Contact Us";
 }

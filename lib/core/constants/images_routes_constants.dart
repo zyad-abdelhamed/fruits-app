@@ -3,6 +3,8 @@ abstract class ImagesRoutesConstants {
   static const String splashScreen = 'assets/images/splash_screen.png';
   static const String google = 'assets/images/google.png';
   static const String facebook = 'assets/images/facebook.png';
+  static const String youtue = 'assets/images/youtube.png';
+  static const String instagram = 'assets/images/instagram.png';
   static const String call = 'assets/images/call.png';
   static const String edit = 'assets/images/edit.png';
   static const String addToCart = 'assets/images/add_to_basket.png';

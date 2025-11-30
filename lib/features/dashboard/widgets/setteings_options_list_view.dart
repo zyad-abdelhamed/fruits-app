@@ -11,15 +11,11 @@ class SettingsOptionsListView extends StatelessWidget {
       itemCount: optionsIcons.length,
       separatorBuilder: (_, __) => const SizedBox(height: 12),
       itemBuilder: (_, int i) {
-        return Material(
-          elevation: 1,
-          borderRadius: BorderRadius.circular(8),
-          child: ListTile(
-            leading: Icon(optionsIcons[i]),
-            title: Text(AppStrings.settingsOptionsTitles[i]),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: getMenuActions(context)[i],
-          ),
+        return ListTile(
+          leading: Icon(optionsIcons[i]),
+          title: Text(AppStrings.settingsOptionsTitles[i]),
+          trailing: const Icon(Icons.chevron_right),
+          onTap: getMenuActions(context)[i],
         );
       },
     );
@@ -63,7 +59,7 @@ class SettingsOptionsListView extends StatelessWidget {
         );
       },
       () {
-        print("About Us tapped");
+        Navigator.pushNamed(context, ViewsRoutesConstants.contactUsView);
       },
     ];
   }
