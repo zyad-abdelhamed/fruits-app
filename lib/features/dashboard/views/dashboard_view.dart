@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_app/features/dashboard/widgets/cart_widget.dart';
 import 'package:fruits_app/features/dashboard/widgets/custom_bottom_nav_bar.dart';
 import 'package:fruits_app/features/dashboard/widgets/home_widget.dart';
+import 'package:fruits_app/features/dashboard/widgets/more_widget.dart';
 import 'package:fruits_app/features/dashboard/widgets/orders_widget.dart';
 
 class DashboardView extends StatefulWidget {
@@ -13,19 +14,19 @@ class DashboardView extends StatefulWidget {
 
 class _DashboardViewState extends State<DashboardView> {
   late final ValueNotifier<int> currentIndexNotifier;
-  late final PageController _PageController;
+  late final PageController _pageController;
 
   @override
   void initState() {
     super.initState();
     currentIndexNotifier = ValueNotifier<int>(0);
-    _PageController = PageController();
+    _pageController = PageController();
   }
 
   @override
   void dispose() {
     currentIndexNotifier.dispose();
-    _PageController.dispose();
+    _pageController.dispose();
     super.dispose();
   }
 
@@ -35,13 +36,13 @@ class _DashboardViewState extends State<DashboardView> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: PageView(
-          controller: _PageController,
+          controller: _pageController,
           children: const [
             HomeWidget(),
             OrdersWidget(),
             CartWidget(),
             Center(child: Text('Favorite')),
-            Center(child: Text('Profile')),
+            MoreWidget(),
           ],
         ),
       ),
@@ -79,7 +80,7 @@ class _DashboardViewState extends State<DashboardView> {
 
   void _updatePage(int value) {
     currentIndexNotifier.value = value;
-    _PageController.animateToPage(
+    _pageController.animateToPage(
       value,
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,

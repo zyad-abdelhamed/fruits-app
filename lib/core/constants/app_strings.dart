@@ -41,4 +41,13 @@ abstract class AppStrings {
   static const String myOrders = 'My Orders';
   static const String basket = 'Basket';
   static const String proceedToCheckout = "proceed to Checkout";
+  static const List<String> settingsOptionsTitles = <String>[
+    'الملف الشخصي', // Profile
+    'طلباتي', // My Orders
+    'المفضلة', // Favorite
+    'اللغة', // Language
+    'الدعم', // Support
+    'الشروط والأحكام', // Terms & Conditions
+    'من نحن', // About Us
+  ];
 }
