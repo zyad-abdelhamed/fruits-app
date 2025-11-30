@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_app/core/constants/app_strings.dart';
+import 'package:fruits_app/core/constants/views_routes_constants.dart';
 
 class SettingsOptionsListView extends StatelessWidget {
   const SettingsOptionsListView({super.key});
@@ -56,7 +57,10 @@ class SettingsOptionsListView extends StatelessWidget {
         print("Support tapped");
       },
       () {
-        print("Terms & Conditions tapped");
+        Navigator.pushNamed(
+          context,
+          ViewsRoutesConstants.termsAndConditionsView,
+        );
       },
       () {
         print("About Us tapped");
