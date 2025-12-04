@@ -12,7 +12,7 @@ class ProductDetailsView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('تفاصيل المنتج'),
-        leading: const BackButton(),
+        leading: const AppBackButton(),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),

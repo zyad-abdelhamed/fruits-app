@@ -3,6 +3,7 @@ abstract class AppStrings {
   static const String skip = 'Skip';
   static const String next = 'Next';
   static const String getStarted = 'Get Started';
+  static const String update = 'Update';
   static const String requiredMark = '*';
   static const List<Map<String, String>> onboardingPageViewItems = [
     {
@@ -19,6 +20,7 @@ abstract class AppStrings {
   static const String signIn = 'Sign in';
   static const String loginToWikala = 'Login to Wikala';
   static const String phoneNumber = 'Phone Number';
+  static const String phoneNumberWithWhatsapp = "Phone Number with Whatsapp";
   static const String password = 'Password';
   static const String forgotPassword = 'Forgot Password?';
   static const String dontHaveAccount = "Don't have an account? ";

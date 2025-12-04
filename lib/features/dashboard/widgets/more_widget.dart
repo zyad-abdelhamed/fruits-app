@@ -19,14 +19,12 @@ class MoreWidget extends StatelessWidget {
         const SizedBox(height: 32.0),
 
         // profile avatar
-        const ProfileAvatar(),
-
-        const SizedBox(height: 16.0),
-
-        // welcome text
-        Text(
-          "${AppStrings.welcome}, ${AppStrings.fruitsMarket}",
-          style: Theme.of(context).textTheme.headlineMedium,
+        ProfileAvatar(
+          circularBorderColor: Colors.grey.shade400,
+          name: AppStrings.fruitsMarket,
+          avatarTopPositionedWidget: const Center(
+            child: Icon(Icons.person_outline, size: 40, color: Colors.grey),
+          ),
         ),
 
         const SizedBox(height: 48.0),

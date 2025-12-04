@@ -40,6 +40,7 @@ class PortoraitSignUpView extends StatelessWidget {
             hintText: AppStrings.phoneNumber,
             prefixIcon: const PhoneNumberFieldDropDownButton(),
           ),
+          keyboardType: TextInputType.phone,
         ),
 
         const SizedBox(height: 24),
