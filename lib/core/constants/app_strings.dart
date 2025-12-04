@@ -33,6 +33,13 @@ abstract class AppStrings {
   static const String confirm = 'Confirm';
   static const String notreceived = 'Not received?';
   static const String sendAgain = 'Send Again';
+  static const List<String> navLabels = [
+    'Home',
+    'Category',
+    'Orders',
+    'Favorite',
+    'More',
+  ];
   static const String deliveryCharges = 'Delivery Charges';
   static const String dot = '•';
   static const String open = 'open';

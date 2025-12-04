@@ -1,12 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_app/core/constants/app_strings.dart';
 import 'package:fruits_app/features/dashboard/widgets/cart_widget.dart';
 import 'package:fruits_app/features/dashboard/widgets/custom_bottom_nav_bar.dart';
+import 'package:fruits_app/features/dashboard/widgets/favorites_widget.dart';
 import 'package:fruits_app/features/dashboard/widgets/home_widget.dart';
 import 'package:fruits_app/features/dashboard/widgets/more_widget.dart';
 import 'package:fruits_app/features/dashboard/widgets/orders_widget.dart';
 
 class DashboardView extends StatefulWidget {
   const DashboardView({super.key});
+
+  List<IconData> get navIcons => const <IconData>[
+    Icons.home,
+    Icons.list,
+    Icons.search,
+    Icons.favorite,
+    Icons.person,
+  ];
+
+  List<StatelessWidget> get pages => const <StatelessWidget>[
+    HomeWidget(),
+    OrdersWidget(),
+    CartWidget(),
+    FavoritesWidget(),
+    MoreWidget(),
+  ];
 
   @override
   State<DashboardView> createState() => _DashboardViewState();
@@ -35,41 +53,20 @@ class _DashboardViewState extends State<DashboardView> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: PageView(
-          controller: _pageController,
-          children: const [
-            HomeWidget(),
-            OrdersWidget(),
-            CartWidget(),
-            Center(child: Text('Favorite')),
-            MoreWidget(),
-          ],
-        ),
+        child: PageView(controller: _pageController, children: widget.pages),
       ),
 
       bottomNavigationBar: ValueListenableBuilder<int>(
         valueListenable: currentIndexNotifier,
-        builder: (context, int currentIndex, _) {
+        builder: (_, int currentIndex, __) {
           return CustomBottomNavBar(
-            items: [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.list),
-                label: 'Category',
+            items: List.generate(
+              widget.navIcons.length,
+              (int i) => BottomNavigationBarItem(
+                icon: Icon(widget.navIcons[i]),
+                label: AppStrings.navLabels[i],
               ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.search),
-                label: 'Search',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.favorite),
-                label: 'Favorite',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: 'Profile',
-              ),
-            ],
+            ),
             currentIndex: currentIndex,
             onTap: _updatePage,
           );
