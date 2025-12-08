@@ -35,8 +35,10 @@ class _BanersWidgetState extends State<BanersWidget> {
       spacing: ConstantsValues.dashBoardColumnSpacing,
       children: [
         SizedBox(
-          height: context.height * 0.20,
-          width: context.width,
+          height: context.isPotrait
+              ? context.height * 0.20
+              : context.height * 0.3,
+          width: context.isPotrait ? context.width : context.width * 0.6,
           child: PageView.builder(
             controller: _pageController,
             onPageChanged: (i) => _currentIndexNotifier.value = i,

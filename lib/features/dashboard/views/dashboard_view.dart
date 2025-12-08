@@ -13,9 +13,9 @@ class DashboardView extends StatefulWidget {
   List<IconData> get navIcons => const <IconData>[
     Icons.home,
     Icons.list,
-    Icons.search,
+    Icons.shopping_cart,
     Icons.favorite,
-    Icons.person,
+    Icons.more_vert,
   ];
 
   List<StatelessWidget> get pages => const <StatelessWidget>[

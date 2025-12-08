@@ -16,7 +16,7 @@ class CustomBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
         color: AppColors.primaryColor,
         borderRadius: const BorderRadius.only(
@@ -34,8 +34,9 @@ class CustomBottomNavBar extends StatelessWidget {
           return GestureDetector(
             onTap: () => onTap(index),
             child: AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              duration: const Duration(milliseconds: 350),
+              curve: Curves.easeOutCubic,
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
               decoration: BoxDecoration(
                 color: isSelected ? Colors.white : Colors.transparent,
                 borderRadius: BorderRadius.circular(32),
@@ -43,24 +44,42 @@ class CustomBottomNavBar extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  IconTheme(
-                    data: IconThemeData(
-                      color: isSelected ? AppColors.primaryColor : Colors.white,
-                      size: 24,
-                    ),
-                    child: icon,
-                  ),
-                  if (isSelected) ...[
-                    const SizedBox(width: 8),
-                    AnimatedDefaultTextStyle(
-                      duration: const Duration(milliseconds: 300),
-                      style: TextStyle(
-                        color: AppColors.primaryColor,
-                        fontSize: 12,
+                  AnimatedScale(
+                    scale: isSelected ? 1.2 : 1.0,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeOutBack,
+                    child: IconTheme(
+                      data: IconThemeData(
+                        color: isSelected
+                            ? AppColors.primaryColor
+                            : Colors.white,
+                        size: 26,
                       ),
-                      child: Text(label),
+                      child: icon,
                     ),
-                  ],
+                  ),
+
+                  AnimatedSize(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeOut,
+                    child: AnimatedOpacity(
+                      duration: const Duration(milliseconds: 250),
+                      opacity: isSelected ? 1 : 0,
+                      child: isSelected
+                          ? Padding(
+                              padding: const EdgeInsets.only(left: 8),
+                              child: Text(
+                                label,
+                                style: TextStyle(
+                                  color: AppColors.primaryColor,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            )
+                          : const SizedBox(),
+                    ),
+                  ),
                 ],
               ),
             ),

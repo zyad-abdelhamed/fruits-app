@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_app/core/constants/app_strings.dart';
+import 'package:fruits_app/core/utils/extentions/media_query_extention.dart';
 import 'package:fruits_app/features/dashboard/widgets/order_widget.dart';
 
 class OrdersWidget extends StatelessWidget {
@@ -15,6 +16,9 @@ class OrdersWidget extends StatelessWidget {
         // orders
         Expanded(
           child: ListView(
+            padding: context.isLandScape
+                ? EdgeInsets.symmetric(horizontal: context.width * 0.2)
+                : null,
             children: const [
               OrderItemWidget(
                 orderNumber: "243188",

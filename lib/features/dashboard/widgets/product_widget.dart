@@ -9,8 +9,8 @@ class ProductWidget extends StatelessWidget {
     super.key,
     required this.productModel,
     required this.extraWidget,
-    this.rowSpacing = 16.0,
-    this.imageSize = 50.0,
+    this.rowSpacing = 12.0,
+    this.imageSize = 40.0,
   });
 
   final Widget extraWidget;
@@ -23,8 +23,9 @@ class ProductWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            // company logo
+            // logo
             Container(
               padding: const EdgeInsets.all(8.0),
               decoration: const BoxDecoration(
@@ -40,10 +41,22 @@ class ProductWidget extends StatelessWidget {
 
             SizedBox(width: rowSpacing),
 
-            // Product data
-            Expanded(child: ProductDataWidget(productModel: productModel)),
-            // extera widget
-            Expanded(child: extraWidget),
+            // product info
+            Expanded(
+              flex: 3,
+              child: ProductDataWidget(productModel: productModel),
+            ),
+
+            SizedBox(width: rowSpacing),
+
+            // extra widget
+            Flexible(
+              flex: 2,
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: FittedBox(fit: BoxFit.scaleDown, child: extraWidget),
+              ),
+            ),
           ],
         ),
       ),
@@ -55,7 +68,7 @@ class ProductDataWidget extends StatelessWidget {
   const ProductDataWidget({
     super.key,
     required this.productModel,
-    this.rowSpacing = 16.0,
+    this.rowSpacing = 12.0,
   });
 
   final ProductModel productModel;
@@ -64,15 +77,22 @@ class ProductDataWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: 8.0,
+      spacing: 8,
       crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        Text(productModel.name, style: context.headlineSmall),
+        Text(
+          productModel.name,
+          style: context.titleMedium,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+
         Row(
           children: <Widget>[
             Text(productModel.price.toString(), style: context.labelLarge),
-            const SizedBox(width: 8.0),
+
+            const SizedBox(width: 8),
+
             Text(
               productModel.oldPrice.toString(),
               style: context.labelSmall.copyWith(
@@ -80,26 +100,23 @@ class ProductDataWidget extends StatelessWidget {
                 decoration: TextDecoration.lineThrough,
               ),
             ),
-            const SizedBox(width: 16.0),
-            Container(
-              padding: const EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                color: Color(0xFFDF958F),
-                borderRadius: BorderRadius.circular(
-                  ConstantsValues.fullCircularRadius,
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    spreadRadius: 1,
-                    blurRadius: 1,
-                    offset: const Offset(0, 1),
+
+            const SizedBox(width: 10),
+
+            Flexible(
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFDF958F),
+                  borderRadius: BorderRadius.circular(
+                    ConstantsValues.fullCircularRadius,
                   ),
-                ],
-              ),
-              child: Text(
-                "up to ${productModel.discount.toString()} off",
-                style: context.labelSmall.copyWith(color: Colors.white),
+                ),
+                child: Text(
+                  "up to ${productModel.discount} off",
+                  style: context.labelSmall.copyWith(color: Colors.white),
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ),
           ],

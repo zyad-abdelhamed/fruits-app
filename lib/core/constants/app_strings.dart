@@ -37,8 +37,8 @@ abstract class AppStrings {
   static const String sendAgain = 'Send Again';
   static const List<String> navLabels = [
     'Home',
-    'Category',
     'Orders',
+    'Cart',
     'Favorite',
     'More',
   ];
@@ -50,6 +50,7 @@ abstract class AppStrings {
   static const String showAll = 'Show all';
   static const String myOrders = 'My Orders';
   static const String basket = 'Basket';
+  static const String favorite = 'Favorite';
   static const String proceedToCheckout = "proceed to Checkout";
   static const List<String> settingsOptionsTitles = <String>[
     'الملف الشخصي', // Profile

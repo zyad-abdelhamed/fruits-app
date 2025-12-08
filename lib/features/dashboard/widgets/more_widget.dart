@@ -8,30 +8,32 @@ class MoreWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        // app bar
-        AppBar(
-          leading: const BackButton(),
-          title: Text(AppStrings.fruitsMarket),
-        ),
-
-        const SizedBox(height: 32.0),
-
-        // profile avatar
-        ProfileAvatar(
-          circularBorderColor: Colors.grey.shade400,
-          name: AppStrings.fruitsMarket,
-          avatarTopPositionedWidget: const Center(
-            child: Icon(Icons.person_outline, size: 40, color: Colors.grey),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          // app bar
+          AppBar(
+            leading: const BackButton(),
+            title: Text(AppStrings.fruitsMarket),
           ),
-        ),
 
-        const SizedBox(height: 48.0),
+          const SizedBox(height: 32.0),
 
-        // options
-        const SettingsOptionsListView(),
-      ],
+          // profile avatar
+          ProfileAvatar(
+            circularBorderColor: Colors.grey.shade400,
+            name: AppStrings.fruitsMarket,
+            avatarTopPositionedWidget: const Center(
+              child: Icon(Icons.person_outline, size: 40, color: Colors.grey),
+            ),
+          ),
+
+          const SizedBox(height: 48.0),
+
+          // options
+          ...SettingsOptions(context).items,
+        ],
+      ),
     );
   }
 }
