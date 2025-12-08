@@ -1,6 +1,6 @@
 abstract class ViewsRoutesConstants {
   static const String splashScreenView = '/splashScreenview';
-  static const String onboardingPage = '/onboardingview';
+  static const String onboardingView = '/onboardingview';
   static const String welcomeView = '/welcomeView';
   static const String loginView = '/loginView';
   static const String signUpView = '/signUpView';

@@ -17,7 +17,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute<SplashScreenView>(
         builder: (BuildContext context) => const SplashScreenView(),
       );
-    case ViewsRoutesConstants.onboardingPage:
+    case ViewsRoutesConstants.onboardingView:
       return MaterialPageRoute<OnboardingView>(
         builder: (BuildContext context) => const OnboardingView(),
       );

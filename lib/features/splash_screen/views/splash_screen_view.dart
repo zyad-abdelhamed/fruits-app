@@ -24,7 +24,7 @@ class SplashScreenView extends StatelessWidget {
     if (context.mounted) {
       Navigator.pushReplacementNamed(
         context,
-        ViewsRoutesConstants.onboardingPage,
+        ViewsRoutesConstants.dashboardView,
       );
     }
   }
