@@ -26,16 +26,18 @@ class ProfileAvatar extends StatelessWidget {
         Stack(
           clipBehavior: Clip.none,
           children: [
-            Container(
-              width: size,
-              height: size,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(color: circularBorderColor, width: 2),
+            Center(
+              child: Container(
+                width: size,
+                height: size,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: circularBorderColor, width: 2),
+                ),
               ),
             ),
 
-            avatarTopPositionedWidget,
+            Positioned.fill(child: avatarTopPositionedWidget),
           ],
         ),
 

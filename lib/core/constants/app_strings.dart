@@ -53,13 +53,13 @@ abstract class AppStrings {
   static const String favorite = 'Favorite';
   static const String proceedToCheckout = "proceed to Checkout";
   static const List<String> settingsOptionsTitles = <String>[
-    'الملف الشخصي', // Profile
-    'طلباتي', // My Orders
-    'المفضلة', // Favorite
-    'اللغة', // Language
-    'الدعم', // Support
-    'الشروط والأحكام', // Terms & Conditions
-    'من نحن', // About Us
+    'Profile',
+    'My Orders',
+    'Favorite',
+    'Language',
+    'Support',
+    'Terms & Conditions',
+    'About Us',
   ];
   static const String termsAndConditions = "Terms and Conditions";
   static const String termsAndConditionsText =

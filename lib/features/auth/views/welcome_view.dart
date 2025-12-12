@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_app/core/constants/app_strings.dart';
 import 'package:fruits_app/core/constants/views_routes_constants.dart';
 import 'package:fruits_app/core/theme/app_colors.dart';
+import 'package:fruits_app/core/utils/extentions/theme_extention.dart';
 import 'package:fruits_app/features/auth/widgets/auth_options_widget.dart';
 import 'package:fruits_app/core/widgets/fruit_market_text_widget.dart';
 import 'package:fruits_app/features/auth/widgets/terms_and_privacy_notice.dart';
@@ -19,6 +20,7 @@ class WelcomeView extends StatelessWidget {
           onPressed: () => Navigator.maybePop(context),
           icon: Icon(Icons.close),
         ),
+        shape: InputBorder.none,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(32.0),
@@ -30,7 +32,7 @@ class WelcomeView extends StatelessWidget {
             Text(
               AppStrings.welcome,
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: context.headlineMedium,
             ),
             const AuthOptionsWidget(),
             RichText(

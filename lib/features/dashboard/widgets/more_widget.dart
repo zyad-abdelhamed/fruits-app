@@ -23,8 +23,10 @@ class MoreWidget extends StatelessWidget {
           ProfileAvatar(
             circularBorderColor: Colors.grey.shade400,
             name: AppStrings.fruitsMarket,
-            avatarTopPositionedWidget: const Center(
-              child: Icon(Icons.person_outline, size: 40, color: Colors.grey),
+            avatarTopPositionedWidget: Icon(
+              Icons.person_outline,
+              size: 40,
+              color: Colors.grey,
             ),
           ),
 

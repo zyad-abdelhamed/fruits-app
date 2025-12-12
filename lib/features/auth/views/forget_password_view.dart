@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_app/core/constants/app_strings.dart';
 import 'package:fruits_app/core/constants/views_routes_constants.dart';
+import 'package:fruits_app/core/widgets/back_button.dart';
 import 'package:fruits_app/core/widgets/fruit_market_text_widget.dart';
 import 'package:fruits_app/features/auth/widgets/phone_number_drop_down_button.dart';
 import 'package:fruits_app/features/auth/widgets/required_mark_widget.dart';
@@ -11,7 +12,7 @@ class ForgetPasswordView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(leading: const BackButton()),
+      appBar: AppBar(leading: const AppBackButton(), shape: InputBorder.none),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(32.0),
         child: Column(

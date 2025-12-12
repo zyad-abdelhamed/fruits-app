@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_app/core/utils/extentions/media_query_extention.dart';
+import 'package:fruits_app/core/widgets/back_button.dart';
 import 'package:fruits_app/features/auth/widgets/landscape_sign_up_view.dart';
 import 'package:fruits_app/features/auth/widgets/portorait_sign_up_view.dart';
 
@@ -9,7 +10,7 @@ class SignUpView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(leading: const BackButton()),
+      appBar: AppBar(leading: const AppBackButton(), shape: InputBorder.none),
       body: SingleChildScrollView(
         padding: context.isLandScape
             ? const EdgeInsets.symmetric(horizontal: 8.0)

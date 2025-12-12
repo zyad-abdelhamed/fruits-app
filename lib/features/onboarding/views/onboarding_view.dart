@@ -33,9 +33,14 @@ class _OnboardingViewState extends State<OnboardingView> {
   }
 
   @override
-  void dispose() {
+  void didChangeDependencies() {
     markedOnoardingAsShown();
 
+    super.didChangeDependencies();
+  }
+
+  @override
+  void dispose() {
     _selectedIndexNotifier.dispose();
     _pageController.dispose();
     super.dispose();

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:fruits_app/core/constants/app_strings.dart';
 import 'package:fruits_app/core/theme/app_colors.dart';
+import 'package:fruits_app/core/widgets/back_button.dart';
 import 'package:otp_plus/otp_plus.dart';
 import 'package:fruits_app/core/widgets/fruit_market_text_widget.dart';
 import 'package:otp_plus/utils/enum/otp_field_shape.dart';
@@ -41,7 +42,7 @@ class _EnterOtpViewState extends State<EnterOtpView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(leading: const BackButton()),
+      appBar: AppBar(leading: const AppBackButton(), shape: InputBorder.none),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(24.0),
         child: Column(
