@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_app/core/constants/app_strings.dart';
 import 'package:fruits_app/core/widgets/back_button.dart';
+import 'package:fruits_app/features/dashboard/views/order_confirm_view.dart';
 import 'package:fruits_app/features/dashboard/widgets/check_out_page_view.dart';
 import 'package:fruits_app/features/dashboard/widgets/check_out_process_button.dart';
 import 'package:fruits_app/features/dashboard/widgets/check_out_steps_widget.dart';
@@ -64,6 +65,13 @@ class _CheckOutViewState extends State<CheckOutView> {
                         curve: Curves.easeIn,
                       );
                     }
+
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const OrderConfirmView(),
+                      ),
+                    );
                   },
                   title: currStep.index < 2
                       ? AppStrings.continueText

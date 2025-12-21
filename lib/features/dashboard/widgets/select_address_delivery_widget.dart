@@ -78,48 +78,50 @@ class AddressCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: Colors.grey.shade300,
-          width: address.isSelected ? 1.5 : 1,
-        ),
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          /// Location Icon
-          Icon(Icons.location_on_outlined, color: Colors.grey.shade600),
-
-          const SizedBox(width: 12),
-
-          /// Address Info
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  address.name,
-                  style: context.bodyLarge.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 6),
-                Text(address.person, style: context.bodyLarge),
-                const SizedBox(height: 2),
-                Text(address.phone, style: context.bodyLarge),
-                const SizedBox(height: 6),
-                Text(address.details, style: context.bodyLarge),
-              ],
-            ),
+    return SingleChildScrollView(
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+            color: Colors.grey.shade300,
+            width: address.isSelected ? 1.5 : 1,
           ),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            /// Location Icon
+            Icon(Icons.location_on_outlined, color: Colors.grey.shade600),
 
-          /// Selected Icon
-          if (address.isSelected)
-            const Icon(Icons.check_circle, color: AppColors.primaryColor),
-        ],
+            const SizedBox(width: 12),
+
+            /// Address Info
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    address.name,
+                    style: context.bodyLarge.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(address.person, style: context.bodyLarge),
+                  const SizedBox(height: 2),
+                  Text(address.phone, style: context.bodyLarge),
+                  const SizedBox(height: 6),
+                  Text(address.details, style: context.bodyLarge),
+                ],
+              ),
+            ),
+
+            /// Selected Icon
+            if (address.isSelected)
+              const Icon(Icons.check_circle, color: AppColors.primaryColor),
+          ],
+        ),
       ),
     );
   }
