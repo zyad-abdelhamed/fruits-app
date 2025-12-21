@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_app/core/constants/app_strings.dart';
 import 'package:fruits_app/core/constants/constants_values.dart';
 import 'package:fruits_app/core/constants/images_routes_constants.dart';
+import 'package:fruits_app/core/widgets/back_button.dart';
 import 'package:fruits_app/features/auth/widgets/required_mark_widget.dart';
 
 class ContactUsView extends StatelessWidget {
@@ -11,7 +12,7 @@ class ContactUsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButton(),
+        leading: const AppBackButton(),
         title: Text(AppStrings.contactUs),
       ),
 
@@ -19,7 +20,7 @@ class ContactUsView extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: 20),
 
@@ -80,8 +81,7 @@ class _SocialIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 55,
-      height: 55,
+      padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(color: Colors.grey.shade300, width: 2),

@@ -22,21 +22,23 @@ class SellersWidget extends StatelessWidget {
                 onPressed: () {},
                 child: Text(
                   AppStrings.showAll,
-                  style: context.titleLarge.copyWith(color: AppColors.blue),
+                  style: context.titleMedium.copyWith(color: AppColors.blue),
                 ),
               ),
             ],
           );
         }
 
-        return SizedBox(
-          width: context.isPotrait ? double.infinity : context.width * 0.6,
-          child: SellerWidget(
-            sellerModel: SellerModel(
-              name: 'سوق الفواكه الطازجة',
-              deliveryCharges: "15.0",
-              productName: 'تفاح أحمر عضوي',
-              isOpen: true,
+        return Center(
+          child: SizedBox(
+            width: context.isPotrait ? double.infinity : context.width * 0.6,
+            child: SellerWidget(
+              sellerModel: SellerModel(
+                name: 'Seller Name',
+                deliveryCharges: "15.0",
+                productName: 'pizza',
+                isOpen: true,
+              ),
             ),
           ),
         );

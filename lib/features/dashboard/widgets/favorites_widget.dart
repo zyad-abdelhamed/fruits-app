@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_app/core/constants/app_strings.dart';
 import 'package:fruits_app/core/constants/images_routes_constants.dart';
 import 'package:fruits_app/core/utils/extentions/media_query_extention.dart';
+import 'package:fruits_app/core/widgets/back_button.dart';
 import 'package:fruits_app/features/dashboard/models/product_model.dart';
 import 'package:fruits_app/features/dashboard/widgets/product_widget.dart';
 
@@ -13,7 +14,10 @@ class FavoritesWidget extends StatelessWidget {
     return Column(
       children: [
         // app bar
-        AppBar(title: const Text(AppStrings.favorite)),
+        AppBar(
+          leading: const AppBackButton(),
+          title: const Text(AppStrings.favorite),
+        ),
 
         // products
         Expanded(

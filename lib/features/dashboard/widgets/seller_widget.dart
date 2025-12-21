@@ -5,6 +5,7 @@ import 'package:fruits_app/core/theme/app_colors.dart';
 import 'package:fruits_app/core/utils/extentions/media_query_extention.dart';
 import 'package:fruits_app/core/utils/extentions/theme_extention.dart';
 import 'package:fruits_app/features/dashboard/models/seller_model.dart';
+import 'package:fruits_app/features/dashboard/views/seller_view.dart';
 
 class SellerWidget extends StatelessWidget {
   const SellerWidget({
@@ -19,34 +20,67 @@ class SellerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: context.isLandScape
-          ? EdgeInsets.all(context.width * 0.4)
-          : const EdgeInsets.all(0.0),
-      child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Row(
-            children: <Widget>[
-              // company logo
-              Container(
-                padding: const EdgeInsets.all(8.0),
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
+    return SizedBox(
+      width: context.isPotrait ? double.infinity : context.width * 0.6,
+      height: 100,
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SellerView(seller: sellerModel),
+            ),
+          );
+        },
+        child: Card(
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Row(
+              children: <Widget>[
+                // company logo
+                Container(
+                  padding: const EdgeInsets.all(8.0),
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Image.asset(
+                    ImagesRoutesConstants.onboarding,
+                    height: imageSize,
+                    width: imageSize,
+                  ),
                 ),
-                child: Image.asset(
-                  ImagesRoutesConstants.onboarding,
-                  height: imageSize,
-                  width: imageSize,
+
+                SizedBox(width: rowSpacing),
+
+                // seller data
+                Expanded(child: SellerDataWidget(sellerModel: sellerModel)),
+
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('4.5', style: context.bodyMedium),
+
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          '2.5 km',
+                          style: context.bodyMedium.copyWith(
+                            color: AppColors.primaryColor,
+                          ),
+                        ),
+                        Icon(
+                          Icons.location_on,
+                          color: AppColors.primaryColor,
+                          size: context.bodyMedium.fontSize,
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-              ),
-
-              SizedBox(width: rowSpacing),
-
-              // seller data
-              Expanded(child: SellerDataWidget(sellerModel: sellerModel)),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -55,22 +89,14 @@ class SellerWidget extends StatelessWidget {
 }
 
 class SellerDataWidget extends StatelessWidget {
-  const SellerDataWidget({
-    super.key,
-    required this.sellerModel,
-    this.rowSpacing = 16.0,
-  });
+  const SellerDataWidget({super.key, required this.sellerModel});
 
   final SellerModel sellerModel;
-  final double rowSpacing;
 
   @override
   Widget build(BuildContext context) {
     final TextStyle headlineStyle = context.bodyLarge;
-    final TextStyle dotTextStyle = headlineStyle.copyWith(
-      color: Colors.grey,
-      fontSize: 32.0,
-    );
+    final TextStyle dotTextStyle = headlineStyle.copyWith(color: Colors.grey);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,12 +105,11 @@ class SellerDataWidget extends StatelessWidget {
         Text(sellerModel.name, style: headlineStyle),
         Text(
           "${AppStrings.deliveryCharges} : ${sellerModel.deliveryCharges}",
-          style: headlineStyle.copyWith(color: Colors.grey),
+          maxLines: 1,
+          style: context.bodySmall.copyWith(color: Colors.grey),
         ),
-        SizedBox(height: 8),
-        Wrap(
-          spacing: rowSpacing,
-          crossAxisAlignment: WrapCrossAlignment.center,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Text(AppStrings.dot, style: dotTextStyle),
             Text(

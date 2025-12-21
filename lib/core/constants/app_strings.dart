@@ -2,8 +2,11 @@ abstract class AppStrings {
   static const String appName = 'Fruits Market';
   static const String skip = 'Skip';
   static const String next = 'Next';
+  static const String continueText = 'Continue';
+  static const String placeOrder = 'Place Order';
   static const String getStarted = 'Get Started';
   static const String update = 'Update';
+  static const String cancelOrder = 'Cancel Order';
   static const String requiredMark = '*';
   static const List<Map<String, String>> onboardingPageViewItems = [
     {
@@ -97,4 +100,6 @@ interchangeable, practically speaking.
 More rarely, it may be called something like 
 an End User Services Agreement (EUSA).''';
   static const String contactUs = "Contact Us";
+  static const String checkout = "checkout";
+  static const String orderTracking = 'Order Tracking';
 }

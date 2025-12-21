@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_app/core/constants/app_strings.dart';
+import 'package:fruits_app/core/widgets/back_button.dart';
 import 'package:fruits_app/features/dashboard/widgets/profile_avatar.dart';
 import 'package:fruits_app/features/dashboard/widgets/setteings_options_list_view.dart';
 
@@ -13,7 +14,7 @@ class MoreWidget extends StatelessWidget {
         children: [
           // app bar
           AppBar(
-            leading: const BackButton(),
+            leading: const AppBackButton(),
             title: Text(AppStrings.fruitsMarket),
           ),
 

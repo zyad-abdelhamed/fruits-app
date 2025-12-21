@@ -7,6 +7,7 @@ import 'package:fruits_app/features/auth/views/sign_up_view.dart';
 import 'package:fruits_app/features/auth/views/welcome_view.dart';
 import 'package:fruits_app/features/dashboard/views/contact_us_view.dart';
 import 'package:fruits_app/features/dashboard/views/dashboard_view.dart';
+import 'package:fruits_app/features/dashboard/views/order_faild_view.dart';
 import 'package:fruits_app/features/dashboard/views/terms_and_conditions_view.dart';
 import 'package:fruits_app/features/onboarding/views/onboarding_view.dart';
 import 'package:fruits_app/features/splash_screen/views/splash_screen_view.dart';
@@ -52,6 +53,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case ViewsRoutesConstants.contactUsView:
       return MaterialPageRoute<ContactUsView>(
         builder: (BuildContext context) => const ContactUsView(),
+      );
+    case ViewsRoutesConstants.orderFaildView:
+      return MaterialPageRoute<OrderFaildView>(
+        builder: (BuildContext context) => const OrderFaildView(),
       );
     default:
       return MaterialPageRoute<Scaffold>(

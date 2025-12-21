@@ -16,22 +16,48 @@ class DashedDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final boxWidth = constraints.constrainWidth();
-        final dashCount = (boxWidth / (dashWidth + dashSpace)).floor();
-
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: List.generate(dashCount, (_) {
-            return SizedBox(
-              width: dashWidth,
-              height: height,
-              child: DecoratedBox(decoration: BoxDecoration(color: color)),
-            );
-          }),
-        );
-      },
+    return SizedBox(
+      height: height,
+      width: VisualDensity.maximumDensity,
+      child: CustomPaint(
+        painter: _DashedDividerPainter(
+          color: color,
+          dashWidth: dashWidth,
+          dashSpace: dashSpace,
+          height: height,
+        ),
+      ),
     );
   }
+}
+
+class _DashedDividerPainter extends CustomPainter {
+  final Color color;
+  final double dashWidth;
+  final double dashSpace;
+  final double height;
+
+  _DashedDividerPainter({
+    required this.color,
+    required this.dashWidth,
+    required this.dashSpace,
+    required this.height,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..strokeWidth = height;
+
+    double startX = 0;
+
+    while (startX < size.width) {
+      canvas.drawLine(Offset(startX, 0), Offset(startX + dashWidth, 0), paint);
+      startX += dashWidth + dashSpace;
+    }
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

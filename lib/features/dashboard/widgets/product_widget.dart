@@ -3,6 +3,7 @@ import 'package:fruits_app/core/constants/constants_values.dart';
 import 'package:fruits_app/core/constants/images_routes_constants.dart';
 import 'package:fruits_app/core/utils/extentions/theme_extention.dart';
 import 'package:fruits_app/features/dashboard/models/product_model.dart';
+import 'package:fruits_app/features/dashboard/views/product_details_view.dart';
 
 class ProductWidget extends StatelessWidget {
   const ProductWidget({
@@ -19,45 +20,50 @@ class ProductWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            // logo
-            Container(
-              padding: const EdgeInsets.all(8.0),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
-              ),
-              child: Image.asset(
-                ImagesRoutesConstants.onboarding,
-                height: imageSize,
-                width: imageSize,
-              ),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const ProductDetailsView()),
+        );
+      },
+      child: SizedBox(
+        height: 100.0,
+        child: Card(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                // logo
+                Container(
+                  padding: const EdgeInsets.all(8.0),
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Image.asset(
+                    ImagesRoutesConstants.onboarding,
+                    height: imageSize,
+                    width: imageSize,
+                  ),
+                ),
+
+                SizedBox(width: rowSpacing),
+
+                // product info
+                Expanded(child: ProductDataWidget(productModel: productModel)),
+
+                SizedBox(width: rowSpacing),
+
+                // extra widget
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: FittedBox(fit: BoxFit.scaleDown, child: extraWidget),
+                ),
+              ],
             ),
-
-            SizedBox(width: rowSpacing),
-
-            // product info
-            Expanded(
-              flex: 3,
-              child: ProductDataWidget(productModel: productModel),
-            ),
-
-            SizedBox(width: rowSpacing),
-
-            // extra widget
-            Flexible(
-              flex: 2,
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: FittedBox(fit: BoxFit.scaleDown, child: extraWidget),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

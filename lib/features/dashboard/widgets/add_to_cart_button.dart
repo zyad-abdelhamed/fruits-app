@@ -15,6 +15,7 @@ class AddToCartButton extends StatelessWidget {
       ),
       padding: const EdgeInsets.all(8.0),
       child: Image.asset(
+        color: Colors.white,
         ImagesRoutesConstants.addToCart,
         height: ConstantsValues.iconDefaultSize,
         width: ConstantsValues.iconDefaultSize,

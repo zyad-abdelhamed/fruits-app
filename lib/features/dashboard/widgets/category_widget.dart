@@ -7,10 +7,11 @@ class CategoryWidget extends StatelessWidget {
     required this.name,
     required this.image,
     required this.size,
+    this.radius = 32.0,
   });
 
   final String name, image;
-  final double size;
+  final double size, radius;
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +20,10 @@ class CategoryWidget extends StatelessWidget {
       width: size,
       child: Card(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(28.0),
+          borderRadius: BorderRadius.circular(radius),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
