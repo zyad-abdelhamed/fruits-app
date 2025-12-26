@@ -19,6 +19,8 @@ class CheckoutPageView extends StatelessWidget {
       ),
       child: PageView(
         controller: _pageController,
+        physics:
+            const NeverScrollableScrollPhysics(), // Prevent user from swiping pages.
         children: const [
           DeliveryTimeSelectionWidget(),
           SelectAddressDeliveryWidget(),

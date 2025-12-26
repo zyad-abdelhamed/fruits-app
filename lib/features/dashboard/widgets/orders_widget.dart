@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_app/core/constants/app_strings.dart';
 import 'package:fruits_app/core/utils/extentions/media_query_extention.dart';
-import 'package:fruits_app/core/widgets/back_button.dart';
 import 'package:fruits_app/features/dashboard/widgets/order_item_widget.dart';
 
 class OrdersWidget extends StatelessWidget {
@@ -13,7 +12,7 @@ class OrdersWidget extends StatelessWidget {
       children: [
         // app bar
         AppBar(
-          leading: const AppBackButton(),
+          automaticallyImplyLeading: false,
           title: Text(AppStrings.myOrders),
         ),
 

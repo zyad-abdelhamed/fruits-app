@@ -77,10 +77,5 @@ class _DashboardViewState extends State<DashboardView> {
 
   void _updatePage(int value) {
     currentIndexNotifier.value = value;
-    _pageController.animateToPage(
-      value,
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-    );
   }
 }

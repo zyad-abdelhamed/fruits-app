@@ -6,6 +6,7 @@ import 'package:fruits_app/core/theme/app_colors.dart';
 ThemeData appTheme = ThemeData(
   useMaterial3: true,
   brightness: Brightness.light,
+  scaffoldBackgroundColor: Colors.white,
   primaryColor: AppColors.primaryColor,
   appBarTheme: _appBarTheme,
   elevatedButtonTheme: _elevatedButtonTheme,
