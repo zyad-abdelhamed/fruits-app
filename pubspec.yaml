@@ -7,8 +7,13 @@ environment:
   sdk: ^3.9.2
 
 dependencies:
+  dartz: ^0.10.1
+  dio: ^5.9.0
+  equatable: ^2.0.8
   flutter:
     sdk: flutter
+  flutter_bloc: ^9.1.1
+  flutter_secure_storage: ^10.0.0
   get_it: ^9.2.0
   otp_plus: ^1.1.0
   shared_preferences: ^2.5.3
