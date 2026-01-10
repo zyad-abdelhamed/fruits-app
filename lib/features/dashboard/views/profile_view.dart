@@ -7,8 +7,8 @@ import 'package:fruits_app/core/widgets/app_banner.dart';
 import 'package:fruits_app/core/widgets/back_button.dart';
 import 'package:fruits_app/features/auth/widgets/phone_number_drop_down_button.dart';
 import 'package:fruits_app/features/auth/widgets/required_mark_widget.dart';
-import 'package:fruits_app/features/dashboard/view_model/user_cubit.dart';
-import 'package:fruits_app/features/dashboard/view_model/user_state.dart';
+import 'package:fruits_app/features/dashboard/view_model/cubit/user_cubit.dart';
+import 'package:fruits_app/features/dashboard/view_model/cubit/user_state.dart';
 import 'package:fruits_app/features/dashboard/widgets/profile_avatar.dart';
 
 class ProfileView extends StatelessWidget {
