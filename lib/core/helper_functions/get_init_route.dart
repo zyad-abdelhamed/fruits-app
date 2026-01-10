@@ -8,7 +8,7 @@ String get getInitRoute {
       sl<BaseCacheService>().getboolFromCache(
         key: CacheConstants.isOnboardingShown,
       ) ??
-      false; // false due to first time app launch
+      false; // false because it first time app launch
   if (isOnboardingShown == true) {
     return ViewsRoutesConstants.splashScreenView;
   }

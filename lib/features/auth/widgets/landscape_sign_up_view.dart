@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_app/core/constants/app_strings.dart';
 import 'package:fruits_app/core/constants/views_routes_constants.dart';
 import 'package:fruits_app/core/theme/app_colors.dart';
 import 'package:fruits_app/core/widgets/fruit_market_text_widget.dart';
 import 'package:flutter/gestures.dart';
+import 'package:fruits_app/features/auth/view_model/cubit/auth_cubit.dart';
+import 'package:fruits_app/features/auth/view_model/cubit/auth_state.dart';
 import 'package:fruits_app/features/auth/widgets/phone_number_drop_down_button.dart';
 import 'package:fruits_app/features/auth/widgets/required_mark_widget.dart';
 
@@ -12,9 +15,10 @@ class LandscapeSignUpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<AuthCubit>();
+
     return Row(
       children: [
-        // الجانب الأيسر: العنوان والنصوص
         Expanded(
           flex: 2,
           child: Column(
@@ -33,7 +37,7 @@ class LandscapeSignUpView extends StatelessWidget {
                   style: const TextStyle(color: Colors.black),
                   children: [
                     TextSpan(
-                      text: AppStrings.signUp,
+                      text: AppStrings.login,
                       style: const TextStyle(color: AppColors.blue),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () => Navigator.pushNamed(
@@ -50,53 +54,61 @@ class LandscapeSignUpView extends StatelessWidget {
 
         const SizedBox(width: 32),
 
-        // الجانب الأيمن: الحقول والأزرار
         Expanded(
           flex: 3,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Name Field
               RequiredMarkWidget(text: AppStrings.fullName),
               TextFormField(
+                controller: cubit.nameController,
                 decoration: InputDecoration(
                   hintText: AppStrings.firstAndLastName,
                 ),
+                validator: (v) => v!.isEmpty ? AppStrings.fullName : null,
               ),
               const SizedBox(height: 24),
-              // Phone Number Field
+
               RequiredMarkWidget(text: AppStrings.phoneNumber),
               TextFormField(
+                controller: cubit.mobileController,
                 decoration: InputDecoration(
                   hintText: AppStrings.phoneNumber,
                   prefixIcon: const PhoneNumberFieldDropDownButton(),
                 ),
                 keyboardType: TextInputType.phone,
+                validator: (v) => v!.isEmpty ? AppStrings.phoneNumber : null,
               ),
               const SizedBox(height: 24),
 
-              // Password Field
               RequiredMarkWidget(text: AppStrings.password),
               TextFormField(
+                controller: cubit.registerPasswordController,
                 obscureText: true,
                 decoration: InputDecoration(hintText: AppStrings.password),
+                validator: (v) => v!.isEmpty ? AppStrings.password : null,
               ),
-              const SizedBox(height: 8.0),
+              const SizedBox(height: 8),
 
-              Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    AppStrings.forgotPassword,
-                    style: const TextStyle(color: AppColors.blue),
-                  ),
-                ),
+              BlocBuilder<AuthCubit, AuthState>(
+                builder: (context, state) {
+                  final isLoading = state is AuthLoading;
+
+                  return ElevatedButton(
+                    onPressed: isLoading ? null : cubit.register,
+                    child: isLoading
+                        ? const SizedBox(
+                            height: 20,
+                            width: 20,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: Colors.white,
+                            ),
+                          )
+                        : Text(AppStrings.signUp),
+                  );
+                },
               ),
-              const SizedBox(height: 8.0),
-
-              // sign up Button
-              ElevatedButton(onPressed: () {}, child: Text(AppStrings.signUp)),
             ],
           ),
         ),
