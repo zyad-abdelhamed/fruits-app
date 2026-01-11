@@ -13,6 +13,7 @@ class AppBanner {
     BuildContext context, {
     required String message,
     required Color backgroundColor,
+    Duration duration = const Duration(seconds: 3),
   }) {
     final messenger = ScaffoldMessenger.of(context);
 
@@ -25,5 +26,10 @@ class AppBanner {
           actions: const [SizedBox()],
         ),
       );
+
+    // Auto dismiss banner
+    Future.delayed(duration, () {
+      messenger.hideCurrentMaterialBanner();
+    });
   }
 }

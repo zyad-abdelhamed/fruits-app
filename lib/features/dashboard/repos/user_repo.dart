@@ -17,7 +17,10 @@ class UserRepository extends BaseRepository {
   Future<Either<Failure, ProfileModel>> getProfile() {
     return execute(() async {
       final Response response = await _apiService.get(ApiConstants.profile);
-      return ProfileModel.fromJson(response.data);
+      throwIfStatusFalse(response.data);
+      print(response.data);
+
+      return ProfileModel.fromJson(response.data['data']);
     });
   }
 
@@ -29,7 +32,7 @@ class UserRepository extends BaseRepository {
     File? profilePhoto,
   }) {
     return execute(() async {
-      final Response response = await _apiService.post(
+      final Response response = await _apiService.put(
         ApiConstants.profile,
         data: {
           'name': name,
@@ -38,6 +41,8 @@ class UserRepository extends BaseRepository {
           if (profilePhoto != null) 'profile_photo': profilePhoto,
         },
       );
+      throwIfStatusFalse(response.data);
+
       return ProfileModel.fromJson(response.data);
     });
   }
@@ -49,10 +54,12 @@ class UserRepository extends BaseRepository {
     required String message,
   }) {
     return execute(() async {
-      await _apiService.post(
+      final response = await _apiService.post(
         ApiConstants.contactUs,
         data: {'name': name, 'mobile': mobile, 'message': message},
       );
+      throwIfStatusFalse(response.data);
+
       return unit;
     });
   }

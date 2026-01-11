@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_app/core/constants/app_strings.dart';
 import 'package:fruits_app/core/constants/constants_values.dart';
 import 'package:fruits_app/core/constants/images_routes_constants.dart';
+import 'package:fruits_app/core/services/dependencey_injection_service.dart';
 import 'package:fruits_app/core/widgets/app_banner.dart';
 import 'package:fruits_app/core/widgets/back_button.dart';
 import 'package:fruits_app/features/auth/widgets/required_mark_widget.dart';
@@ -44,7 +45,7 @@ class _ContactUsViewState extends State<ContactUsView> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => UserCubit(context.read()),
+      create: (_) => sl<UserCubit>(),
       child: BlocListener<UserCubit, UserState>(
         listener: (context, state) {
           if (state is UserActionSuccess) {

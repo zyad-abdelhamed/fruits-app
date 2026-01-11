@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_app/core/constants/app_strings.dart';
+import 'package:fruits_app/core/services/dependencey_injection_service.dart';
+import 'package:fruits_app/features/dashboard/view_model/cubit/favorite_cubit.dart';
+import 'package:fruits_app/features/dashboard/view_model/cubit/vendors_cubit.dart';
 import 'package:fruits_app/features/dashboard/widgets/cart_widget.dart';
 import 'package:fruits_app/features/dashboard/widgets/custom_bottom_nav_bar.dart';
 import 'package:fruits_app/features/dashboard/widgets/favorites_widget.dart';
@@ -50,27 +54,35 @@ class _DashboardViewState extends State<DashboardView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: PageView(controller: _pageController, children: widget.pages),
-      ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<VendorCubit>(
+          create: (_) => sl<VendorCubit>()..getVendors(),
+        ),
+        BlocProvider(create: (_) => sl<FavouriteCubit>()..getFavourites()),
+      ],
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: PageView(controller: _pageController, children: widget.pages),
+        ),
 
-      bottomNavigationBar: ValueListenableBuilder<int>(
-        valueListenable: currentIndexNotifier,
-        builder: (_, int currentIndex, __) {
-          return CustomBottomNavBar(
-            items: List.generate(
-              widget.navIcons.length,
-              (int i) => BottomNavigationBarItem(
-                icon: Icon(widget.navIcons[i]),
-                label: AppStrings.navLabels[i],
+        bottomNavigationBar: ValueListenableBuilder<int>(
+          valueListenable: currentIndexNotifier,
+          builder: (_, int currentIndex, __) {
+            return CustomBottomNavBar(
+              items: List.generate(
+                widget.navIcons.length,
+                (int i) => BottomNavigationBarItem(
+                  icon: Icon(widget.navIcons[i]),
+                  label: AppStrings.navLabels[i],
+                ),
               ),
-            ),
-            currentIndex: currentIndex,
-            onTap: _updatePage,
-          );
-        },
+              currentIndex: currentIndex,
+              onTap: _updatePage,
+            );
+          },
+        ),
       ),
     );
   }

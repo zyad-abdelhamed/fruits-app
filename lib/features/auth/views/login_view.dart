@@ -37,7 +37,7 @@ class LoginView extends StatelessWidget {
               }
             },
             child: Form(
-              key: context.read<AuthCubit>().formKey,
+              // key: context.read<AuthCubit>().formKey,
               child: context.isLandScape
                   ? const LandscapeLoginView()
                   : const PortoraitLoginView(),

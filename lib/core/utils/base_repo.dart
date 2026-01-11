@@ -7,7 +7,19 @@ abstract class BaseRepository {
       final result = await action();
       return Right(result);
     } catch (e) {
+      print(e);
       return Left(ServerFailure.fromException(e));
+    }
+  }
+
+  /// 🔥 HANDLE STATUS FALSE
+  void throwIfStatusFalse(dynamic responseData) {
+    if (responseData is Map && responseData['status'] == false) {
+      throw Exception(
+        responseData['error_message_en'] ??
+            responseData['error_message'] ??
+            'Request failed',
+      );
     }
   }
 }

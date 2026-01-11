@@ -100,7 +100,7 @@ class LandscapeLoginView extends StatelessWidget {
                   final isLoading = state is AuthLoading;
 
                   return ElevatedButton(
-                    onPressed: isLoading ? null : cubit.login,
+                    onPressed: cubit.login,
                     child: isLoading
                         ? const SizedBox(
                             height: 20,

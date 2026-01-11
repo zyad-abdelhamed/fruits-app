@@ -30,13 +30,13 @@ class AuthCubit extends Cubit<AuthState> {
 
   /// LOGIN
   Future<void> login() async {
-    if (!validate()) return;
+    //if (!validate()) return;
 
     emit(AuthLoading());
 
     final result = await authRepository.login(
-      phoneOrEmail: phoneOrEmailController.text.trim(),
-      password: passwordController.text.trim(),
+      phoneOrEmail: phoneOrEmailController.text,
+      password: passwordController.text,
     );
 
     result.fold(
@@ -47,15 +47,15 @@ class AuthCubit extends Cubit<AuthState> {
 
   /// REGISTER
   Future<void> register() async {
-    if (!validate()) return;
+    //if (!validate()) return;
 
     emit(AuthLoading());
 
     final result = await authRepository.register(
-      name: nameController.text.trim(),
-      mobile: mobileController.text.trim(),
-      email: emailController.text.trim(),
-      password: registerPasswordController.text.trim(),
+      name: nameController.text,
+      mobile: mobileController.text,
+      email: emailController.text,
+      password: registerPasswordController.text,
     );
 
     result.fold(
@@ -71,7 +71,7 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthLoading());
 
     final result = await authRepository.forgetPassword(
-      forgetEmailController.text.trim(),
+      forgetEmailController.text,
     );
 
     result.fold(

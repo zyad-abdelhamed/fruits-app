@@ -14,7 +14,7 @@ import 'package:fruits_app/features/dashboard/widgets/profile_avatar.dart';
 class ProfileView extends StatelessWidget {
   ProfileView({super.key});
 
-  final _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +49,7 @@ class ProfileView extends StatelessWidget {
                   return Form(
                     key: _formKey,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ProfileAvatar(
                           circularBorderColor: AppColors.primaryColor,
@@ -103,13 +104,11 @@ class ProfileView extends StatelessWidget {
                           width: double.infinity,
                           height: 50,
                           child: ElevatedButton(
-                            onPressed: (!state.hasChanges || state.isUpdating)
-                                ? null
-                                : () {
-                                    if (_formKey.currentState!.validate()) {
-                                      cubit.updateProfile();
-                                    }
-                                  },
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                cubit.updateProfile();
+                              }
+                            },
                             child: state.isUpdating
                                 ? const SizedBox(
                                     width: 22,

@@ -26,6 +26,8 @@ class SignUpView extends StatelessWidget {
           child: BlocListener<AuthCubit, AuthState>(
             listener: (context, state) {
               if (state is AuthSuccess) {
+                AppBanner.showSuccess(context, message: 'Sign up successful');
+
                 Navigator.pushReplacementNamed(
                   context,
                   ViewsRoutesConstants.loginView,
@@ -35,7 +37,7 @@ class SignUpView extends StatelessWidget {
               }
             },
             child: Form(
-              key: context.read<AuthCubit>().formKey,
+              //key: context.read<AuthCubit>().formKey,
               child: context.isLandScape
                   ? const LandscapeSignUpView()
                   : const PortoraitSignUpView(),

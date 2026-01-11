@@ -4,8 +4,8 @@ import 'package:fruits_app/core/constants/images_routes_constants.dart';
 import 'package:fruits_app/core/theme/app_colors.dart';
 import 'package:fruits_app/core/utils/extentions/media_query_extention.dart';
 import 'package:fruits_app/core/utils/extentions/theme_extention.dart';
-import 'package:fruits_app/features/dashboard/models/seller_model.dart';
 import 'package:fruits_app/features/dashboard/views/seller_view.dart';
+import '../models/vendor_model.dart';
 
 class SellerWidget extends StatelessWidget {
   const SellerWidget({
@@ -15,8 +15,10 @@ class SellerWidget extends StatelessWidget {
     this.imageSize = 50.0,
   });
 
-  final SellerModel sellerModel;
+  final VendorModel sellerModel;
   final double rowSpacing, imageSize;
+
+  bool get isOpen => sellerModel.isOpened == 'Y';
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +29,7 @@ class SellerWidget extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(
-              builder: (context) => SellerView(seller: sellerModel),
-            ),
+            MaterialPageRoute(builder: (_) => SellerView(seller: sellerModel)),
           );
         },
         child: Card(
@@ -37,7 +37,7 @@ class SellerWidget extends StatelessWidget {
             padding: const EdgeInsets.all(12.0),
             child: Row(
               children: <Widget>[
-                // company logo
+                /// COMPANY LOGO
                 Container(
                   padding: const EdgeInsets.all(8.0),
                   decoration: const BoxDecoration(
@@ -53,22 +53,20 @@ class SellerWidget extends StatelessWidget {
 
                 SizedBox(width: rowSpacing),
 
-                // seller data
+                /// SELLER DATA
                 Expanded(child: SellerDataWidget(sellerModel: sellerModel)),
 
+                /// RATE + DISTANCE (STATIC)
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('4.5', style: context.bodyMedium),
-
+                    Text(sellerModel.rate, style: context.bodyMedium),
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
-                          '2.5 km',
-                          style: context.bodyMedium.copyWith(
-                            color: AppColors.primaryColor,
-                          ),
+                        const Text(
+                          '2.5 km', // ثابت
+                          style: TextStyle(color: AppColors.primaryColor),
                         ),
                         Icon(
                           Icons.location_on,
@@ -91,7 +89,9 @@ class SellerWidget extends StatelessWidget {
 class SellerDataWidget extends StatelessWidget {
   const SellerDataWidget({super.key, required this.sellerModel});
 
-  final SellerModel sellerModel;
+  final VendorModel sellerModel;
+
+  bool get isOpen => sellerModel.isOpened == 'Y';
 
   @override
   Widget build(BuildContext context) {
@@ -102,28 +102,41 @@ class SellerDataWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
+        /// NAME
         Text(sellerModel.name, style: headlineStyle),
-        Text(
-          "${AppStrings.deliveryCharges} : ${sellerModel.deliveryCharges}",
+
+        /// DELIVERY CHARGES (ثابت)
+        const SizedBox(height: 4),
+        const Text(
+          "${AppStrings.deliveryCharges} : 15 EGP",
           maxLines: 1,
-          style: context.bodySmall.copyWith(color: Colors.grey),
+          style: TextStyle(color: Colors.grey),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Text(AppStrings.dot, style: dotTextStyle),
-            Text(
-              sellerModel.isOpen ? AppStrings.open : AppStrings.close,
-              style: TextStyle(
-                color: sellerModel.isOpen ? AppColors.green : AppColors.red,
+
+        const SizedBox(height: 4),
+        Flexible(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text(AppStrings.dot, style: dotTextStyle),
+
+              /// OPEN / CLOSE
+              Text(
+                isOpen ? AppStrings.open : AppStrings.close,
+                style: TextStyle(
+                  color: isOpen ? AppColors.green : AppColors.red,
+                ),
               ),
-            ),
-            Text(AppStrings.dot, style: dotTextStyle),
-            Text(
-              sellerModel.productName,
-              style: const TextStyle(color: AppColors.blueGrey),
-            ),
-          ],
+
+              Text(AppStrings.dot, style: dotTextStyle),
+
+              /// PRODUCT NAME (ثابت)
+              const Text(
+                'Groceries',
+                style: TextStyle(color: AppColors.blueGrey),
+              ),
+            ],
+          ),
         ),
       ],
     );

@@ -17,57 +17,58 @@ class OrdersWidget extends StatelessWidget {
         ),
 
         // orders
-        Expanded(
-          child: ListView(
-            padding: context.isLandScape
-                ? EdgeInsets.symmetric(horizontal: context.width * 0.2)
-                : null,
-            children: [
-              OrderItemWidget(
-                orderId: "243188",
-                date: "9 Sep",
-                itemsCount: 4,
-                status: OrderStatus.delivering,
-                onTap: () {},
-              ),
-              OrderItemWidget(
-                orderId: "882610",
-                date: "8 Sep",
-                itemsCount: 3,
-                status: OrderStatus.finished,
-                onTap: () {},
-              ),
-              OrderItemWidget(
-                orderId: "882611",
-                date: "8 Sep",
-                itemsCount: 3,
-                status: OrderStatus.canceled,
-                onTap: () {},
-              ),
-              OrderItemWidget(
-                orderId: "882612",
-                date: "8 Sep",
-                itemsCount: 3,
-                status: OrderStatus.working,
-                onTap: () {},
-              ),
-              OrderItemWidget(
-                orderId: "882613",
-                date: "8 Sep",
-                itemsCount: 3,
-                status: OrderStatus.delivered,
-                onTap: () {},
-              ),
-              OrderItemWidget(
-                orderId: "882614",
-                date: "8 Sep",
-                itemsCount: 3,
-                status: OrderStatus.newOrder,
-                onTap: () {},
-              ),
-            ],
-          ),
-        ),
+        Expanded(child: Center(child: Text('no orders yet'))),
+        // Expanded(
+        //   child: ListView(
+        //     padding: context.isLandScape
+        //         ? EdgeInsets.symmetric(horizontal: context.width * 0.2)
+        //         : null,
+        //     children: [
+        //       OrderItemWidget(
+        //         orderId: "243188",
+        //         date: "9 Sep",
+        //         itemsCount: 4,
+        //         status: OrderStatus.delivering,
+        //         onTap: () {},
+        //       ),
+        //       OrderItemWidget(
+        //         orderId: "882610",
+        //         date: "8 Sep",
+        //         itemsCount: 3,
+        //         status: OrderStatus.finished,
+        //         onTap: () {},
+        //       ),
+        //       OrderItemWidget(
+        //         orderId: "882611",
+        //         date: "8 Sep",
+        //         itemsCount: 3,
+        //         status: OrderStatus.canceled,
+        //         onTap: () {},
+        //       ),
+        //       OrderItemWidget(
+        //         orderId: "882612",
+        //         date: "8 Sep",
+        //         itemsCount: 3,
+        //         status: OrderStatus.working,
+        //         onTap: () {},
+        //       ),
+        //       OrderItemWidget(
+        //         orderId: "882613",
+        //         date: "8 Sep",
+        //         itemsCount: 3,
+        //         status: OrderStatus.delivered,
+        //         onTap: () {},
+        //       ),
+        //       OrderItemWidget(
+        //         orderId: "882614",
+        //         date: "8 Sep",
+        //         itemsCount: 3,
+        //         status: OrderStatus.newOrder,
+        //         onTap: () {},
+        //       ),
+        //     ],
+        //   ),
+        // ),
       ],
     );
   }

@@ -22,23 +22,21 @@ class SplashScreenView extends StatelessWidget {
 
   goToNextPage(BuildContext context) async {
     await Future.delayed(const Duration(seconds: 1));
+    final String? token = await sl<SecureTokenStorage>().getToken();
+    print(token);
 
     if (context.mounted) {
-      final String? token = await sl<SecureTokenStorage>().getToken();
-
-      if (context.mounted) {
-        if (token == null) {
-          Navigator.pushReplacementNamed(
-            context,
-            ViewsRoutesConstants.loginView,
-          );
-        }
-
+      if (token == null) {
         Navigator.pushReplacementNamed(
           context,
-          ViewsRoutesConstants.dashboardView,
+          ViewsRoutesConstants.welcomeView,
         );
+        return;
       }
+      Navigator.pushReplacementNamed(
+        context,
+        ViewsRoutesConstants.dashboardView,
+      );
     }
   }
 }

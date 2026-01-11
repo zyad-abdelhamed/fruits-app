@@ -19,11 +19,7 @@ class UserCubit extends Cubit<UserState> {
   String? _oldEmail;
   String? _oldMobile;
 
-  UserCubit(this._userRepository) : super(UserInitial()) {
-    nameController.addListener(_onFieldsChanged);
-    emailController.addListener(_onFieldsChanged);
-    mobileController.addListener(_onFieldsChanged);
-  }
+  UserCubit(this._userRepository) : super(UserInitial());
 
   /// CLEANUP
   @override
@@ -59,16 +55,11 @@ class UserCubit extends Cubit<UserState> {
     });
   }
 
-  /// ON TEXT CHANGE
-  void _onFieldsChanged() {
-    if (state is! UserProfileLoaded) return;
-
-    final hasChanges =
-        nameController.text != _oldName ||
+  /// CHECK IF FORM HAS CHANGES (تتنادي من UI)
+  bool get hasChanges {
+    return nameController.text != _oldName ||
         emailController.text != _oldEmail ||
         mobileController.text != _oldMobile;
-
-    emit((state as UserProfileLoaded).copyWith(hasChanges: hasChanges));
   }
 
   /// UPDATE PROFILE
@@ -78,16 +69,19 @@ class UserCubit extends Cubit<UserState> {
     emit((state as UserProfileLoaded).copyWith(isUpdating: true));
 
     final result = await _userRepository.updateProfile(
-      name: nameController.text,
-      email: emailController.text,
-      mobile: mobileController.text,
-      profilePhoto: profilePhoto,
+      name: nameController.text.trim(),
+      email: emailController.text.trim(),
+      mobile: mobileController.text.trim(),
     );
 
     result.fold((failure) => emit(UserError(failure.message)), (profile) {
       _oldName = profile.name;
       _oldEmail = profile.email;
       _oldMobile = profile.mobile;
+
+      nameController.text = profile.name;
+      emailController.text = profile.email;
+      mobileController.text = profile.mobile;
 
       emit(
         UserProfileLoaded(

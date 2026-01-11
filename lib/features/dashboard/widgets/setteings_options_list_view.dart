@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_app/core/constants/app_strings.dart';
 import 'package:fruits_app/core/constants/views_routes_constants.dart';
+import 'package:fruits_app/features/dashboard/views/profile_view.dart';
 
 class SettingsOptions {
   final List<Widget> items;
@@ -36,7 +37,10 @@ class SettingsOptions {
   static List<VoidCallback> _getMenuActions(BuildContext context) {
     return [
       () {
-        print("Profile tapped");
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => ProfileView()),
+        );
       },
       () {
         print("My Orders tapped");

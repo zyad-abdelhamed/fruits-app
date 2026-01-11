@@ -18,11 +18,17 @@ class AuthRepository extends BaseRepository {
     required String password,
   }) async {
     return execute(() async {
-      await apiService.post(
+      final r = await apiService.post(
         ApiConstants.login,
         data: {'phone_or_email': phoneOrEmail, 'password': password},
       );
+      throwIfStatusFalse(r.data);
 
+      final token = r.data['data']?['token'];
+      print(token);
+      if (token != null && token.toString().isNotEmpty) {
+        await tokenStorage.saveToken(token);
+      }
       return unit;
     });
   }
@@ -35,7 +41,7 @@ class AuthRepository extends BaseRepository {
     required String password,
   }) async {
     return execute(() async {
-      await apiService.post(
+      final r = await apiService.post(
         ApiConstants.register,
         data: {
           'name': name,
@@ -44,7 +50,13 @@ class AuthRepository extends BaseRepository {
           'password': password,
         },
       );
+      throwIfStatusFalse(r.data);
 
+      final token = r.data['data']?['token'];
+      print(r.data);
+      if (token != null && token.toString().isNotEmpty) {
+        await tokenStorage.saveToken(token);
+      }
       return unit;
     });
   }

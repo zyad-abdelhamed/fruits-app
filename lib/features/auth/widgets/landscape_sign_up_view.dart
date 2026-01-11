@@ -95,7 +95,7 @@ class LandscapeSignUpView extends StatelessWidget {
                   final isLoading = state is AuthLoading;
 
                   return ElevatedButton(
-                    onPressed: isLoading ? null : cubit.register,
+                    onPressed: isLoading ? null : () => cubit.register(),
                     child: isLoading
                         ? const SizedBox(
                             height: 20,

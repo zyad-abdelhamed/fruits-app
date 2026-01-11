@@ -19,7 +19,7 @@ class ProfileModel {
     return ProfileModel(
       id: json['id'],
       name: json['name'],
-      email: json['email'],
+      email: json['email'] ?? '',
       mobile: json['mobile'],
       profilePhotoPath: json['profile_photo_path'],
       profilePhotoUrl: json['profile_photo_url'],
